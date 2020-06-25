@@ -1,0 +1,1 @@
+# js-padroes-a-funcionais
