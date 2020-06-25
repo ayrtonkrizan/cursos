@@ -3,15 +3,15 @@ import Personagem from "./personagens/hipsta.js";
 import Gotinha from "./inimigos/gotinha.js";
 import GotinhaVoadora from "./inimigos/gotinha-voadora.js";
 import Troll from "./inimigos/troll.js";
-
-
-let inimigos = [];
-let inimigo;
-let inimigoGrande;
-let inimigoVoador;
-let pontuacao;
+import Pontuacao from "./pontuacao.js";
 
 const sketch = (p) => {
+    let inimigos = [];
+    let inimigo;
+    let inimigoGrande;
+    let inimigoVoador;
+    let pontuacao;
+    
     let somDoPulo;
     let somDoJogo;
     let cenario;
@@ -29,6 +29,7 @@ const sketch = (p) => {
         let width = p.width
         p.createCanvas(window.innerWidth, window.innerHeight);
         cenario = new Cenario(p, 3);
+        pontuacao = new Pontuacao();
         personagem = new Personagem(p, 0, 30, 110, 135, 220, 270);
         inimigo = new Gotinha(p, width - 52, 30, 52, 52, 104, 104, 10, 200);
         inimigoVoador = new GotinhaVoadora(p, width - 52, 200, 100, 75, 200, 150, 10, 1500);
@@ -45,7 +46,6 @@ const sketch = (p) => {
 
     p.keyPressed = () => {
         if (p.key === 'ArrowUp') {
-            console.log('aqui')
             personagem.pula()
             somDoPulo.play()
         }
@@ -57,6 +57,9 @@ const sketch = (p) => {
 
         personagem.exibe(p);
         personagem.aplicaGravidade();
+
+        pontuacao.exibe(p)
+        pontuacao.adicionarPonto(p)
 
         inimigos.forEach(inimigo => {
             inimigo.exibe(p)
@@ -73,4 +76,3 @@ const sketch = (p) => {
 
 /** Start P5 */
 new p5(sketch);
-// Collide.collideRectRect = collideRectRect;
