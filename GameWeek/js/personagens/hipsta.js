@@ -1,3 +1,5 @@
+import Personagem from "./personagem.js";
+
 const matriz = [
     [0, 0],
     [220, 0],
@@ -15,5 +17,13 @@ const matriz = [
     [220, 810],
     [440, 810],
     [660, 810],
-]
+  ]
 
+export default class Hipsta extends Personagem {
+    constructor(p, x, variacaoY, largura, altura, larguraSprite, alturaSprite) {
+        let imagem = p.loadImage('assets/imagens/personagem/correndo.png');
+        super(p, matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite);
+    }
+
+
+}

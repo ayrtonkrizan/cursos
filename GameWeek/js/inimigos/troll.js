@@ -33,7 +33,7 @@ const matriz = [
 
 export default class Troll extends Inimigo {
     constructor(p, x, variacaoY, largura, altura, larguraSprite, alturaSprite, velocidade, delay) {
-        let imagem = p.loadImage('../../imagens/inimigos/troll.png');
+        let imagem = p.loadImage('assets/imagens/inimigos/troll.png');
         super(p, matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite, velocidade, delay);
     }
 

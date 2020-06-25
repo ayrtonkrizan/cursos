@@ -1,8 +1,11 @@
-class Personagem extends Animacao {
-    constructor(matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite){
-      super(matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite);
+import Animacao from "../jogo/animacao.js";
+// import 'https://cdn.jsdelivr.net/gh/bmoren/p5.collide2D/p5.collide2d.min.js'
+
+export default class Personagem extends Animacao {
+    constructor(p, matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite){
+      super(p,matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite);
       this.variacaoY = variacaoY;
-      this.yInicial = height - this.altura - this.variacaoY;
+      this.yInicial = p.height - this.altura - this.variacaoY;
       this.y = this.yInicial;
       
       this.velocidadeDoPulo = 0;
@@ -11,14 +14,14 @@ class Personagem extends Animacao {
       this.pulos = 0
     }
     
-    pula() {
+    pula(p) {
       if(this.pulos < 2) {
         this.velocidadeDoPulo = this.alturaDoPulo
         this.pulos++
       }
     }
     
-    aplicaGravidade() {
+    aplicaGravidade(p) {
       this.y = this.y + this.velocidadeDoPulo
       this.velocidadeDoPulo = this.velocidadeDoPulo + this.gravidade
       
@@ -30,7 +33,7 @@ class Personagem extends Animacao {
     
     estaColidindo(inimigo) {
       const precisao = .7
-      const colisao = collideRectRect(
+      const colisao = this.collideRectRect(
         this.x, 
         this.y, 
         this.largura * precisao, 

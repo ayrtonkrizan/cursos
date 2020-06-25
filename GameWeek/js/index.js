@@ -1,9 +1,9 @@
-import Cenario from "./cenario.js";
-import Personagem from "./personagens/hipsta.js";
+import Cenario from "./jogo/cenario.js";
+import Personagem from "./personagens/hipsta.js"
 import Gotinha from "./inimigos/gotinha.js";
 import GotinhaVoadora from "./inimigos/gotinha-voadora.js";
 import Troll from "./inimigos/troll.js";
-import Pontuacao from "./pontuacao.js";
+import Pontuacao from "./jogo/pontuacao.js";
 
 const sketch = (p) => {
     let inimigos = [];
@@ -19,10 +19,10 @@ const sketch = (p) => {
     let imagemGameOver;
 
     p.preload = () => {
-        imagemGameOver = p.loadImage('../../imagens/assets/game-over.png');
+        imagemGameOver = p.loadImage('assets/imagens/jogo/game-over.png');
 
-        somDoJogo = p.loadSound('sons/trilha_jogo.mp3');
-        somDoPulo = p.loadSound('sons/somPulo.mp3');
+        somDoJogo = p.loadSound('assets/sons/trilha_jogo.mp3');
+        somDoPulo = p.loadSound('assets/sons/somPulo.mp3');
     }
 
     p.setup = () => {

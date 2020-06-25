@@ -33,7 +33,7 @@ const matriz = [
 
 export default class Gotinha extends Inimigo {
     constructor(p, x, variacaoY, largura, altura, larguraSprite, alturaSprite, velocidade, delay) {
-        let imagem = p.loadImage('../../imagens/inimigos/gotinha.png');
+        let imagem = p.loadImage('assets/imagens/inimigos/gotinha.png');
         super(p, matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite, velocidade, delay);
     }
 
