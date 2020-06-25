@@ -11,8 +11,6 @@ let inimigoGrande;
 let inimigoVoador;
 let pontuacao;
 
-// console.log('collideRectRect',window)
-
 const sketch = (p) => {
     let somDoPulo;
     let somDoJogo;
@@ -21,7 +19,6 @@ const sketch = (p) => {
     let imagemGameOver;
 
     p.preload = () => {
-        // imagemCenario = p.loadImage('../../imagens/cenario/floresta.png');
         imagemGameOver = p.loadImage('../../imagens/assets/game-over.png');
 
         somDoJogo = p.loadSound('sons/trilha_jogo.mp3');
@@ -42,20 +39,31 @@ const sketch = (p) => {
         inimigos.push(inimigoVoador)
         inimigos.push(inimigoGrande)
 
+        p.frameRate(40)
         // somDoJogo.loop();
     };
+
+    p.keyPressed = () => {
+        if (p.key === 'ArrowUp') {
+            console.log('aqui')
+            personagem.pula()
+            somDoPulo.play()
+        }
+    }
+
     p.draw = () => {
         cenario.exibe(p);
         cenario.move(p);
 
         personagem.exibe(p);
+        personagem.aplicaGravidade();
 
         inimigos.forEach(inimigo => {
             inimigo.exibe(p)
             inimigo.move(p)
             if (personagem.estaColidindo(inimigo)) {
                 p.image(imagemGameOver, p.width / 2 - 200, p.height / 3)
-                p.noLoop()
+                // p.noLoop()
             }
 
         })
