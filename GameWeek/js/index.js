@@ -7,6 +7,8 @@ const sketch = (p) => {
 
     const alteraCena = cena => {
         cenaAtual = cena;
+        cenas[cenaAtual].reset(p);
+        p.loop();
     }
 
     p.setup = () => {

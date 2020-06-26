@@ -6,8 +6,8 @@ import GotinhaVoadora from "../inimigos/gotinha-voadora.js";
 import Troll from "../inimigos/troll.js";
 
 export default class Level extends Cenario {
-    constructor(p) {
-        super(p, 3);
+    constructor(p, alteraCena) {
+        super(p, alteraCena, 3);
         this.setup(p);
     }
 
@@ -43,8 +43,7 @@ export default class Level extends Cenario {
         this.inimigo.move(p);
 
         if (this.personagem.estaColidindo(this.inimigo)) {
-            p.image(this.imagemGameOver, p.width / 2 - 200, p.height / 3);
-            p.noLoop()
+            this.gameOver(p);
         }
 
         if (this.inimigo.passou()) {
@@ -61,10 +60,5 @@ export default class Level extends Cenario {
         if(key==='Enter'){
             this.reset(p);
         }
-    }
-
-    reset(p){
-        this.setup(p);
-        p.loop();
     }
 }
