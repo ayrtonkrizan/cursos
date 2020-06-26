@@ -1,5 +1,5 @@
 # Imersão Game Dev
-Código baseado nas aulas gratuitas disponibilizadas no pela alura [aqui](https://www.alura.com.br/imersao-gamedev-javascript);
+Código baseado nas aulas gratuitas disponibilizadas pela alura [aqui](https://www.alura.com.br/imersao-gamedev-javascript);
 
 ### Principais Diferenças
 - Código feito em ES6 e módulos;
