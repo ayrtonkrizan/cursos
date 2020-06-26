@@ -1,5 +1,5 @@
 export default class Animacao {
-  constructor(p, matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite) {
+  constructor(p, matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite, precisao) {
     this.matriz = matriz;
     this.imagem = imagem;
     this.largura = largura;
@@ -10,13 +10,21 @@ export default class Animacao {
     this.larguraSprite = larguraSprite;
     this.alturaSprite = alturaSprite;
 
+    this.precisao = precisao;
     this.frameAtual = 0;
     this.collideRectRect = p.collideRectRect;
+
+    this.larguraPrecisa = this.largura * this.precisao;
+    this.alturaPrecisa = this.altura * this.precisao;
+    this.calcXPreciso();
+    this.calcYPreciso();
   }
 
   exibe(p) {
     p.image(this.imagem, this.x, this.y, this.largura, this.altura, this.matriz[this.frameAtual][0], this.matriz[this.frameAtual][1], this.larguraSprite, this.alturaSprite);
 
+    // p.noFill();
+    // p.rect(this.xPreciso, this.yPreciso, this.larguraPrecisa, this.alturaPrecisa)
     this.anima();
   }
 
@@ -26,5 +34,12 @@ export default class Animacao {
     if (this.frameAtual >= this.matriz.length - 1) {
       this.frameAtual = 0
     }
+  }
+
+  calcXPreciso() {
+    this.xPreciso = this.x + (this.largura - this.larguraPrecisa)/2
+  }
+  calcYPreciso() {
+    this.yPreciso = this.y + (this.altura - this.alturaPrecisa)/2
   }
 }

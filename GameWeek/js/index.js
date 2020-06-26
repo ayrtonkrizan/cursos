@@ -2,6 +2,7 @@ import Level1 from "./cenas/level1.js";
 import Inicial from "./cenas/inicial.js";
 
 const sketch = (p) => {
+    // let cenaAtual = 'level1';
     let cenaAtual = 'inicial';
     let cenas = {};
 

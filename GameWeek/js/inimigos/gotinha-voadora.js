@@ -24,11 +24,12 @@ const largura = 100;
 const altura = 75;
 const larguraSprite= 200;
 const alturaSprite= 150;
+const precisao = 0.7
 
 export default class GotinhaVoadora extends Inimigo {
     constructor(p, x, variacaoY, velocidade, delay) {
         let imagem = p.loadImage('assets/imagens/inimigos/gotinha-voadora.png');
-        super(p, matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite, velocidade, delay);
+        super(p, matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite, velocidade, delay, precisao);
     }
 
 

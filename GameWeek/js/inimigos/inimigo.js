@@ -1,11 +1,12 @@
 import Animacao from "../jogo/animacao.js";
 
 export default class Inimigo extends Animacao {
-  constructor(p, matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite, velocidade, delay) {
-    super(p, matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite)
+  constructor(p, matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite, velocidade, delay, precisao = 0.7) {
+    super(p, matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite, precisao)
 
-    this.velocidade = velocidade
-    this.delay = delay
+    this.velocidade = velocidade;
+    this.delay = delay;
+    this.precisao = precisao;
     this.x = p.width + this.delay
   }
 
@@ -15,6 +16,7 @@ export default class Inimigo extends Animacao {
     if (this.x < -this.largura - this.delay) {
       this.x = p.width
     }
+    this.calcXPreciso();
   }
 
   passou() {

@@ -20,15 +20,16 @@ const matriz = [
 ]
 
 const largura = 110;
-const  altura = 135;
-const  larguraSprite = 220;
-const  alturaSprite = 270;
+const altura = 135;
+const larguraSprite = 220;
+const alturaSprite = 270;
 
 export default class Hipsta extends Personagem {
     constructor(p, x, variacaoY) {
         let imagem = p.loadImage('assets/imagens/personagem/correndo.png');
         super(p, matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite);
-        
+
         this.somDoPulo = p.loadSound('assets/sons/somPulo.mp3');
     }
+
 }
