@@ -9,4 +9,4 @@ Código baseado nas aulas gratuitas disponibilizadas pela alura [aqui](https://w
 
 ### Para jogar
 
-clique para ver a [DEMO](https://www.alura.com.br/imersao-gamedev-javascript);
+Bora testar? [DEMO](https://ayrtonkrizan.github.io/cursos/GameWeek/);
