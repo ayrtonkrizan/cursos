@@ -1,5 +1,5 @@
 import Cenario from "../jogo/cenario.js";
-import Pontuacao from "../jogo/Pontuacao.js";
+import Pontuacao from "../jogo/pontuacao.js";
 import Personagem from "../personagens/hipsta.js"
 import Gotinha from "../inimigos/gotinha.js";
 import GotinhaVoadora from "../inimigos/gotinha-voadora.js";
