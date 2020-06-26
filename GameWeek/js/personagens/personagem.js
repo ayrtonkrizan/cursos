@@ -18,6 +18,7 @@ export default class Personagem extends Animacao {
       if(this.pulos < 2) {
         this.velocidadeDoPulo = this.alturaDoPulo
         this.pulos++
+        if(this.somDoPulo) this.somDoPulo.play();
       }
     }
     

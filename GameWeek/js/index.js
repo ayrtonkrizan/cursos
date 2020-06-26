@@ -1,75 +1,32 @@
-import Cenario from "./jogo/cenario.js";
-import Personagem from "./personagens/hipsta.js"
-import Gotinha from "./inimigos/gotinha.js";
-import GotinhaVoadora from "./inimigos/gotinha-voadora.js";
-import Troll from "./inimigos/troll.js";
-import Pontuacao from "./jogo/pontuacao.js";
+import Level1 from "./cenas/level1.js";
+import Inicial from "./cenas/inicial.js";
 
 const sketch = (p) => {
-    let inimigos = [];
-    let inimigo;
-    let inimigoGrande;
-    let inimigoVoador;
-    let pontuacao;
-    
-    let somDoPulo;
-    let somDoJogo;
-    let cenario;
-    let personagem;
-    let imagemGameOver;
+    let cenaAtual = 'inicial';
+    let cenas = {};
 
-    p.preload = () => {
-        imagemGameOver = p.loadImage('assets/imagens/jogo/game-over.png');
-
-        somDoJogo = p.loadSound('assets/sons/trilha_jogo.mp3');
-        somDoPulo = p.loadSound('assets/sons/somPulo.mp3');
+    const alteraCena = cena => {
+        cenaAtual = cena;
     }
 
     p.setup = () => {
-        let width = p.width
         p.createCanvas(window.innerWidth, window.innerHeight);
-        cenario = new Cenario(p, 3);
-        pontuacao = new Pontuacao();
-        personagem = new Personagem(p, 0, 30, 110, 135, 220, 270);
-        inimigo = new Gotinha(p, width - 52, 30, 52, 52, 104, 104, 10, 200);
-        inimigoVoador = new GotinhaVoadora(p, width - 52, 200, 100, 75, 200, 150, 10, 1500);
-        inimigoGrande = new Troll(p, width, 0, 200, 200, 400, 400, 10, 2500);
+        cenas = {
+            inicial: new Inicial(p, alteraCena),
+            level1: new Level1(p, alteraCena)
+        }
+        cenas[cenaAtual].playSom(false);
 
-
-        inimigos.push(inimigo)
-        inimigos.push(inimigoVoador)
-        inimigos.push(inimigoGrande)
-
-        p.frameRate(40)
-        // somDoJogo.loop();
+        p.frameRate(40);
     };
 
     p.keyPressed = () => {
-        if (p.key === 'ArrowUp') {
-            personagem.pula()
-            somDoPulo.play()
-        }
+        cenas[cenaAtual].keyPressed(p.key, p);
     }
 
     p.draw = () => {
-        cenario.exibe(p);
-        cenario.move(p);
+        cenas[cenaAtual].draw(p);
 
-        personagem.exibe(p);
-        personagem.aplicaGravidade();
-
-        pontuacao.exibe(p)
-        pontuacao.adicionarPonto(p)
-
-        inimigos.forEach(inimigo => {
-            inimigo.exibe(p)
-            inimigo.move(p)
-            if (personagem.estaColidindo(inimigo)) {
-                p.image(imagemGameOver, p.width / 2 - 200, p.height / 3)
-                // p.noLoop()
-            }
-
-        })
     };
 };
 

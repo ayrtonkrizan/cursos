@@ -1,9 +1,20 @@
 export default class Cenario {
   constructor(p, velocidade) {
+    this.playing = false;
+    this.imagemGameOver = p.loadImage('assets/imagens/jogo/game-over.png');
+    this.somDaCena = p.loadSound('assets/sons/trilha_jogo.mp3');
+    this.imagem = p.loadImage('assets/imagens/cenario/floresta.png');
     this.velocidade = velocidade;
     this.x1 = 0;
     this.x2 = p.width;
-    this.imagem = p.loadImage('../../imagens/cenario/floresta.png');
+  }
+
+  draw() {
+    console.log('FALTA SOBRESCREVER O METODO DRAW!');
+  }
+
+  keyPressed(key) {
+    console.log(`Tecla pressionada |${key}|`)
   }
 
   exibe(p) {
@@ -20,6 +31,13 @@ export default class Cenario {
     }
     if (this.x2 < -p.width) {
       this.x2 = p.width;
+    }
+  }
+
+  playSom(toca) {
+    if (toca && !this.playing) {
+      setTimeout(() => this.somDaCena.loop(), 2000);
+      this.playing = true;
     }
   }
 }
