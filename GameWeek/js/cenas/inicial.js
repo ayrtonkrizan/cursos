@@ -32,6 +32,7 @@ export default class Inicial extends Cenario {
         p.textFont(this.fonte);
         p.textAlign(p.CENTER);
         p.textSize(50);
+        p.fill("#000000");
         p.text("As Aventuras de", p.width / 2, p.height / 3);
         p.textSize(150);
         p.text("Hipsta", p.width / 2, p.height / 5 * 3);
