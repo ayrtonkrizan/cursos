@@ -14,8 +14,8 @@ export default class Animacao {
     this.frameAtual = 0;
     this.collideRectRect = p.collideRectRect;
 
-    this.larguraPrecisa = this.largura * this.precisao;
-    this.alturaPrecisa = this.altura * this.precisao;
+    this.larguraPrecisa = parseInt(this.largura * this.precisao);
+    this.alturaPrecisa = parseInt(this.altura * this.precisao);
     this.calcXPreciso();
     this.calcYPreciso();
   }
@@ -23,8 +23,8 @@ export default class Animacao {
   exibe(p) {
     p.image(this.imagem, this.x, this.y, this.largura, this.altura, this.matriz[this.frameAtual][0], this.matriz[this.frameAtual][1], this.larguraSprite, this.alturaSprite);
 
-    // p.noFill();
-    // p.rect(this.xPreciso, this.yPreciso, this.larguraPrecisa, this.alturaPrecisa)
+    p.noFill();
+    p.rect(this.xPreciso, this.yPreciso, this.larguraPrecisa, this.alturaPrecisa)
     this.anima();
   }
 
@@ -37,9 +37,9 @@ export default class Animacao {
   }
 
   calcXPreciso() {
-    this.xPreciso = this.x + (this.largura - this.larguraPrecisa)/2
+    this.xPreciso = parseInt(this.x + (this.largura - this.larguraPrecisa)/2)
   }
   calcYPreciso() {
-    this.yPreciso = this.y + (this.altura - this.alturaPrecisa)/2
+    this.yPreciso = parseInt(this.y + (this.altura - this.alturaPrecisa)/2)
   }
 }

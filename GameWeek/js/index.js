@@ -5,11 +5,16 @@ const sketch = (p) => {
     // let cenaAtual = 'level1';
     let cenaAtual = 'inicial';
     let cenas = {};
+    let config = {};
 
     const alteraCena = cena => {
         cenaAtual = cena;
         cenas[cenaAtual].reset(p);
         p.loop();
+    }
+
+    p.preload = ()=>{
+        config = p.loadJSON("config.json")
     }
 
     p.setup = () => {
@@ -20,7 +25,7 @@ const sketch = (p) => {
         }
         cenas[cenaAtual].playSom(false);
 
-        p.frameRate(40);
+        p.frameRate(20);
     };
 
     p.keyPressed = () => {

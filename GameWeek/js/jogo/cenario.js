@@ -26,9 +26,9 @@ export default class Cenario {
     p.image(this.imagem, this.x2, 0, p.width, p.height);
   }
 
-  move(p) {
-    this.x1 = this.x1 - this.velocidade;
-    this.x2 = this.x2 - this.velocidade;
+  move(p, acelerador=1) {
+    this.x1 = this.x1 - (this.velocidade * acelerador);
+    this.x2 = this.x2 - (this.velocidade * acelerador);
 
     if (this.x1 < -p.width) {
       this.x1 = p.width;
@@ -51,6 +51,7 @@ export default class Cenario {
     p.text("Aperte Enter para tentar novamente", p.width / 2, p.height / 2);
 
     this._botaoTelaInicial(p).draw(p);
+    p.redraw();
     p.noLoop();
   }
 

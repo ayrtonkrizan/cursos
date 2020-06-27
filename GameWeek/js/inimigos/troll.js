@@ -39,9 +39,9 @@ const precisao = 0.6
 
 
 export default class Troll extends Inimigo {
-    constructor(p, x, variacaoY, velocidade, delay) {
+    constructor(p, x, variacaoY, velocidade) {
         let imagem = p.loadImage('assets/imagens/inimigos/troll.png');
-        super(p, matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite, velocidade, delay, precisao);
+        super(p, matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite, velocidade, precisao);
     }
 
 
